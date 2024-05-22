@@ -1,0 +1,281 @@
+================================================================================
+Integers
+================================================================================
+
+def main():
+    return 42
+    return 0xDEAD
+    return 0XBeaf
+    return 0b001
+    return 0B001
+    return 1_1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+     (return_statement
+      (integer))
+     (return_statement
+      (integer))
+     (return_statement
+      (integer))
+     (return_statement
+      (integer))
+     (return_statement
+      (integer))
+     (return_statement
+      (integer)))))
+
+
+================================================================================
+Float
+================================================================================
+
+def main():
+    return 0.1
+    return 3.14
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (float))
+      (return_statement
+        (float)))))
+
+
+================================================================================
+String
+================================================================================
+
+def main():
+    return "hello World!"
+    return "🌏🌏🌏"
+    return "𝓐𝓫𝓬"
+    return "𐌀𐌁𐌂"
+    return "日本語"
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (string))
+      (return_statement
+        (string))
+      (return_statement
+        (string))
+      (return_statement
+        (string))
+      (return_statement
+        (string)))))
+
+
+================================================================================
+Character
+================================================================================
+
+def main():
+    return 'x'
+    return '日'
+    return '\u{65e5}'
+    return '🌏'
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (character))
+      (return_statement
+        (character))
+      (return_statement
+        (character))
+      (return_statement
+        (character)))))
+
+================================================================================
+Symbol
+================================================================================
+
+def main():
+    return ``
+    return `A`
+    return `AB`
+    return `ABC`
+    return `ABCD`
+    return `A+CD`
+    return `/ACZ`
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (symbol))
+      (return_statement
+        (symbol))
+      (return_statement
+        (symbol))
+      (return_statement
+        (symbol))
+      (return_statement
+        (symbol))
+      (return_statement
+        (symbol))
+      (return_statement
+        (symbol)))))
+
+================================================================================
+List
+================================================================================
+
+def main():
+    return []
+    return [42, a,]
+    return [42, foo, ['a', 'b']]
+    return [1, 3.14, "string", '💀', `AAAA`]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (list))
+      (return_statement
+        (list
+          (integer)
+          (identifier)))
+      (return_statement
+        (list
+          (integer)
+          (identifier)
+          (list
+            (character)
+            (character))))
+      (return_statement
+        (list
+          (integer)
+          (float)
+          (string)
+          (character)
+          (symbol))))))
+
+================================================================================
+Map
+================================================================================
+
+def main():
+    return {}
+    return { 0: 4, `hi`: "bye", }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    parameters: (parameters)
+    (body
+      (return_statement
+        (map))
+      (return_statement
+        (map
+          key: (integer)
+          value: (integer)
+          key: (symbol)
+          value: (string))))))
+
+================================================================================
+Tuple
+================================================================================
+
+def main():
+    return (1, "string", 2.0)
+    return (1, (1,2))
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (tuple
+          (integer)
+          (string)
+          (float)))
+      (return_statement
+        (tuple
+          (integer)
+          (tuple
+            (integer)
+            (integer)))))))
+
+================================================================================
+Superposition
+================================================================================
+
+def main():
+    return {1 2 3}
+    return {1, 2, 3,}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (superposition
+          (integer)
+          (integer)
+          (integer)))
+      (return_statement
+        (superposition
+          (integer)
+          (integer)
+          (integer))))))
+
+================================================================================
+Constructor
+================================================================================
+
+def main():
+  return Type/Ctr { field1: 4, field2: 8 }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (constructor
+          (identifier)
+          (identifier)
+          (integer)
+          (identifier)
+          (integer))))))

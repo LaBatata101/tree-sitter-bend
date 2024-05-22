@@ -1,0 +1,68 @@
+================================================================================
+Imp Function Definition
+================================================================================
+
+def func():
+    a = 1
+    return a
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (assignment_statement
+        (identifier)
+        (integer))
+      (return_statement
+        (identifier)))))
+
+================================================================================
+Imp Object Definition
+================================================================================
+
+object Vec { len, data }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (object_definition
+    (identifier)
+    field: (identifier)
+    field: (identifier)))
+
+================================================================================
+Imp Type Definition
+================================================================================
+
+type Option:
+  Some { value }
+  None
+
+type Tree:
+  Node { value, ~left, ~right }
+  Leaf
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_type_definition
+    (identifier)
+    (imp_type_constructor
+      (identifier)
+      (imp_type_constructor_field
+        (identifier)))
+    (imp_type_constructor
+      (identifier)))
+  (imp_type_definition
+    (identifier)
+    (imp_type_constructor
+      (identifier)
+      (imp_type_constructor_field
+        (identifier)
+        (identifier)
+        (identifier)))
+    (imp_type_constructor
+      (identifier))))

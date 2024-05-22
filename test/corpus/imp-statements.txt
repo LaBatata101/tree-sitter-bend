@@ -1,0 +1,378 @@
+================================================================================
+Assignment Statement
+================================================================================
+
+def main():
+    a = 1;
+    b <- 2;
+    (first, second) = (1, 2)
+    {x y} = {2 3}
+
+--------------------------------------------------------------------------------
+
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (assignment_statement
+        (identifier)
+        (integer))
+      (assignment_statement
+        (identifier)
+        (integer))
+      (assignment_statement
+        (tuple
+          (identifier)
+          (identifier))
+        (tuple
+          (integer)
+          (integer)))
+      (assignment_statement
+        (superposition
+          (identifier)
+          (identifier))
+        (superposition
+          (integer)
+          (integer))))))
+
+
+================================================================================
+Use Statement
+================================================================================
+
+def main():
+    use x = 2 + 3;
+    use x = abc
+
+--------------------------------------------------------------------------------
+
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (use_statement
+        (identifier)
+        (binary_op
+          (integer)
+          (integer)))
+      (use_statement
+        (identifier)
+        (identifier)))))
+
+================================================================================
+Augment Assignment Statement
+================================================================================
+
+def main():
+    x += 1;
+    y *= 2 + 2
+    w -= 69
+    z /= 42
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (aug_assignment_statement
+        (identifier)
+        (integer))
+      (aug_assignment_statement
+        (identifier)
+        (binary_op
+          (integer)
+          (integer)))
+      (aug_assignment_statement
+        (identifier)
+        (integer))
+      (aug_assignment_statement
+        (identifier)
+        (integer)))))
+
+================================================================================
+If Statement
+================================================================================
+
+def main():
+    if a > b:
+        return a
+    elif a < c:
+        return c
+    elif d > c:
+        return d
+    else:
+        return b
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (if_statement
+        (comparison_op
+          (identifier)
+          (identifier))
+        (body
+          (return_statement
+            (identifier)))
+        (elif_clause
+          (comparison_op
+            (identifier)
+            (identifier))
+          (body
+            (return_statement
+              (identifier))))
+        (elif_clause
+          (comparison_op
+            (identifier)
+            (identifier))
+          (body
+            (return_statement
+              (identifier))))
+        (else_clause
+          (body
+            (return_statement
+              (identifier))))))))
+
+================================================================================
+Bend Statement
+================================================================================
+
+def main():
+    bend x = 0:
+      when x < 10:
+        left = fork(x + 1)
+        right = fork(x + 1)
+        y = Tree/Node(left, right)
+      else:
+        y = Tree/Leaf(x)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (bend_statement
+        (bind
+          (identifier)
+          (integer))
+        (when_clause
+          (comparison_op
+            (identifier)
+            (integer))
+          (body
+            (assignment_statement
+              (identifier)
+              (call_expression
+                (identifier)
+                (arguments
+                  (binary_op
+                    (identifier)
+                    (integer)))))
+            (assignment_statement
+              (identifier)
+              (call_expression
+                (identifier)
+                (arguments
+                  (binary_op
+                    (identifier)
+                    (integer)))))
+            (assignment_statement
+              (identifier)
+              (call_expression
+                (identifier)
+                (arguments
+                  (identifier)
+                  (identifier))))))
+        (else_clause
+          (body
+            (assignment_statement
+              (identifier)
+              (call_expression
+                (identifier)
+                (arguments
+                  (identifier))))))))))
+
+================================================================================
+Fold Statement
+================================================================================
+
+def main():
+    fold x = Tree/leaf:
+      case Tree/node:
+        return x.value + x.left + x.right
+      case Tree/leaf:
+        return 0
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (fold_statement
+        (match_bind
+          (identifier)
+          (identifier))
+        (body
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (return_statement
+                (binary_op
+                  (binary_op
+                    (identifier)
+                    (identifier))
+                  (identifier)))))
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (return_statement
+                (integer)))))))))
+
+================================================================================
+Match Statement
+================================================================================
+
+def main():
+    match x = Option/none:
+      case Option/some:
+        y = x.value
+      case Option/none:
+        y = 0
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (match_statement
+        (match_bind
+          (identifier)
+          (identifier))
+        (body
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (assignment_statement
+                (identifier)
+                (identifier))))
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (assignment_statement
+                (identifier)
+                (integer)))))))))
+
+================================================================================
+Switch Statement
+================================================================================
+
+def main():
+    switch x = 5:
+      case 0:
+        return 6
+      case 1:
+        return 7
+      case _:
+        return x-2
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (switch_statement
+        (match_bind
+          (identifier)
+          (integer))
+        (body
+          (switch_case
+            (switch_pattern
+              (integer))
+            (body
+              (return_statement
+                (integer))))
+          (switch_case
+            (switch_pattern
+              (integer))
+            (body
+              (return_statement
+                (integer))))
+          (switch_case
+            (switch_pattern)
+            (body
+              (return_statement
+                (binary_op
+                  (identifier)
+                  (integer))))))))))
+
+================================================================================
+Open Statement
+================================================================================
+
+def main():
+    open Point: p
+    open Vec: v;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    parameters: (parameters)
+    (body
+      (open_statement
+        type: (identifier)
+        var: (identifier))
+      (open_statement
+        type: (identifier)
+        var: (identifier)))))
+
+================================================================================
+Do Statement
+================================================================================
+
+def main():
+    do Result:
+      x <- safe_div(2, 0)
+      return x
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (do_statement
+        (identifier)
+        (body
+          (assignment_statement
+            (identifier)
+            (call_expression
+              (identifier)
+              (arguments
+                (integer)
+                (integer))))
+          (return_statement
+            (identifier)))))))

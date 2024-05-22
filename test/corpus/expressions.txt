@@ -1,0 +1,364 @@
+================================================================================
+List Comprehension
+================================================================================
+
+def main():
+    return [x for x in list]
+    return [x for x in list if x]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    name: (identifier)
+    parameters: (parameters)
+    (body
+      (return_statement
+        (list_comprehension
+          body: (identifier)
+          (for_clause
+            left: (identifier)
+            right: (identifier))))
+      (return_statement
+        (list_comprehension
+          body: (identifier)
+          (for_clause
+            left: (identifier)
+            right: (identifier)
+            (if_clause
+              (identifier))))))))
+
+
+================================================================================
+Unary Operators
+================================================================================
+
+def main():
+    return +69
+    return -12
+    return -3.14
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (unary_op
+          (integer)))
+      (return_statement
+        (unary_op
+          (integer)))
+      (return_statement
+        (unary_op
+          (float))))))
+
+================================================================================
+Comparison Operators
+================================================================================
+
+def main():
+    return 69 > 42
+    return 1 < 0
+    return 5 != 6.5
+    return 3.14 == -1
+    return 69 < 5 < 10
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (comparison_op
+          (integer)
+          (integer)))
+      (return_statement
+        (comparison_op
+          (integer)
+          (integer)))
+      (return_statement
+        (comparison_op
+          (integer)
+          (float)))
+      (return_statement
+        (comparison_op
+          (float)
+          (unary_op
+            (integer))))
+      (return_statement
+        (comparison_op
+          (comparison_op
+            (integer)
+            (integer))
+          (integer))))))
+
+================================================================================
+Binary Operators
+================================================================================
+
+def main():
+    return 1 + 2
+    return 1 - 2
+    return 3.0 * 5
+    return 5 % 2
+    return 2 ** 3
+    return 69 & 69
+    return 420 | 42
+    return 1 ^ 1
+    return 1 + 2 - 3
+    return 4 + 5 * 7 % 10 / 5 ** 2
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (binary_op
+          (integer)
+          (integer)))
+      (return_statement
+        (binary_op
+          (integer)
+          (integer)))
+      (return_statement
+        (binary_op
+          (float)
+          (integer)))
+      (return_statement
+        (binary_op
+          (integer)
+          (integer)))
+      (return_statement
+        (binary_op
+          (integer)
+          (integer)))
+      (return_statement
+        (binary_op
+          (integer)
+          (integer)))
+      (return_statement
+        (binary_op
+          (integer)
+          (integer)))
+      (return_statement
+        (binary_op
+          (integer)
+          (integer)))
+      (return_statement
+        (binary_op
+          (binary_op
+            (integer)
+            (integer))
+          (integer)))
+      (return_statement
+        (binary_op
+          (integer)
+          (binary_op
+            (binary_op
+              (binary_op
+                (integer)
+                (integer))
+              (integer))
+            (binary_op
+              (integer)
+              (integer))))))))
+
+================================================================================
+Parenthesized Expression
+================================================================================
+
+def main():
+    return (1)
+    return 1 * (2 + 3)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (parenthesized_expression
+          (integer)))
+      (return_statement
+        (binary_op
+          (integer)
+          (parenthesized_expression
+            (binary_op
+              (integer)
+              (integer))))))))
+
+================================================================================
+Lambda Expression
+================================================================================
+
+def main():
+    return λa: a
+    return λa, b: b
+    return λa b c: a + b
+    return lambda a, b: a + b
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (lambda_expression
+          (parameters
+            (identifier))
+          (identifier)))
+      (return_statement
+        (lambda_expression
+          (parameters
+            (identifier)
+            (identifier))
+          (identifier)))
+      (return_statement
+        (lambda_expression
+          (parameters
+            (identifier)
+            (identifier)
+            (identifier))
+          (binary_op
+            (identifier)
+            (identifier))))
+      (return_statement
+        (lambda_expression
+          (parameters
+            (identifier)
+            (identifier))
+          (binary_op
+            (identifier)
+            (identifier)))))))
+
+================================================================================
+Unscoped Lambda Expression
+================================================================================
+
+def main():
+    return λ$x: $x
+    return lambda $a, $b: $a
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (lambda_expression
+          (parameters
+            (unscoped_var))
+          (unscoped_var)))
+      (return_statement
+        (lambda_expression
+          (parameters
+            (unscoped_var)
+            (unscoped_var))
+          (unscoped_var))))))
+
+================================================================================
+Call Expression
+================================================================================
+
+def main():
+    return func()
+    return func(x)
+    return func(a, b, c)
+    return func(a = 1, b = 1 + 3, c = foo(69 + 69))
+    return Type/Ctr(4, 8)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (call_expression
+          (identifier)
+          (arguments)))
+      (return_statement
+        (call_expression
+          (identifier)
+          (arguments
+            (identifier))))
+      (return_statement
+        (call_expression
+          (identifier)
+          (arguments
+            (identifier)
+            (identifier)
+            (identifier))))
+      (return_statement
+        (call_expression
+          (identifier)
+          (arguments
+            (identifier)
+            (integer)
+            (identifier)
+            (binary_op
+              (integer)
+              (integer))
+            (identifier)
+            (call_expression
+              (identifier)
+              (arguments
+                (binary_op
+                  (integer)
+                  (integer)))))))
+      (return_statement
+        (call_expression
+          (identifier)
+          (arguments
+            (integer)
+            (integer)))))))
+
+
+================================================================================
+Eraser Expression
+================================================================================
+
+def main():
+    eraser = *
+    * = 41 + 1
+    return *
+    return *(41 + 1)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_definition
+    (identifier)
+    (parameters)
+    (body
+      (assignment_statement
+        (identifier)
+        (eraser))
+      (assignment_statement
+        (eraser)
+        (binary_op
+          (integer)
+          (integer)))
+      (return_statement
+        (eraser))
+      (return_statement
+        (eraser
+          (parenthesized_expression
+            (binary_op
+              (integer)
+              (integer))))))))
