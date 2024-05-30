@@ -1,0 +1,465 @@
+================================================================================
+Let Bindings
+================================================================================
+
+main = let x = (+ 1 2)
+x
+main = let (fst, snd, era) = (1, 2, *);
+(+ fst snd)
+main = let {f1 f2} = λx x;
+(f1 f2)
+main = let $x = (some_fn $x);
+*
+
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (let_bind
+        (pattern
+          (identifier))
+        (let_value
+          (num_operator
+            (operator)
+            (integer)
+            (integer)))
+        (let_next
+          (identifier)))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (let_bind
+        (pattern
+          (tuple
+            (identifier)
+            (identifier)
+            (identifier)))
+        (let_value
+          (tuple
+            (integer)
+            (integer)
+            (eraser)))
+        (let_next
+          (num_operator
+            (operator)
+            (identifier)
+            (identifier))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (let_bind
+        (pattern
+          (superposition
+            (identifier)
+            (identifier)))
+        (let_value
+          (fun_lambda
+            (pattern
+              (identifier))
+            (body
+              (identifier))))
+        (let_next
+          (application
+            (identifier)
+            (identifier))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (let_bind
+        (pattern
+          (unscoped_var))
+        (let_value
+          (application
+            (identifier)
+            (unscoped_var)))
+        (let_next
+          (eraser))))))
+
+================================================================================
+Fun Lambdas
+================================================================================
+
+main = λ(fst, snd) snd
+main = λa let (fst, snd) = a; snd
+main = λ{x y} (x y)
+main = λa let {x y} = a; (x y)
+main = λ$x $x
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_lambda
+        (pattern
+          (tuple
+            (identifier)
+            (identifier)))
+        (body
+          (identifier)))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_lambda
+        (pattern
+          (identifier))
+        (body
+          (let_bind
+            (pattern
+              (tuple
+                (identifier)
+                (identifier)))
+            (let_value
+              (identifier))
+            (let_next
+              (identifier)))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_lambda
+        (pattern
+          (superposition
+            (identifier)
+            (identifier)))
+        (body
+          (application
+            (identifier)
+            (identifier))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_lambda
+        (pattern
+          (identifier))
+        (body
+          (let_bind
+            (pattern
+              (superposition
+                (identifier)
+                (identifier)))
+            (let_value
+              (identifier))
+            (let_next
+              (application
+                (identifier)
+                (identifier))))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_lambda
+        (pattern
+          (unscoped_var))
+        (body
+          (unscoped_var))))))
+
+================================================================================
+Use Term
+================================================================================
+
+main = use x = (+ 2 3)
+(+ x x)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (use
+        (identifier)
+        (use_value
+          (num_operator
+            (operator)
+            (integer)
+            (integer)))
+        (use_next
+          (num_operator
+            (operator)
+            (identifier)
+            (identifier)))))))
+
+================================================================================
+Match Term
+================================================================================
+
+main = match opt = (Some "Bend") {
+  Some: opt.value;
+  None: "No name";
+}
+main = match opt {
+  _: 1
+  *: True
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_match
+        (match_bind
+          (identifier)
+          (application
+            (identifier)
+            (string)))
+        (body
+          (match_case
+            (match_pattern
+              (identifier))
+            (identifier))
+          (match_case
+            (match_pattern
+              (identifier))
+            (string))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_match
+        (match_bind
+          (identifier))
+        (body
+          (match_case
+            (match_pattern)
+            (integer))
+          (match_case
+            (match_pattern
+              (eraser))
+            (identifier)))))))
+
+================================================================================
+Match Term
+================================================================================
+
+main = switch n {
+  0: "zero"
+  1: "one"
+  _: "greater than 1"
+}
+main = switch x = (+ 1 1) {
+  0: 42
+  _: x-1
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_switch
+        (match_bind
+          (identifier))
+        (body
+          (switch_case
+            (switch_pattern
+              (integer))
+            (string))
+          (switch_case
+            (switch_pattern
+              (integer))
+            (string))
+          (switch_case
+            (switch_pattern)
+            (string))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_switch
+        (match_bind
+          (identifier)
+          (num_operator
+            (operator)
+            (integer)
+            (integer)))
+        (body
+          (switch_case
+            (switch_pattern
+              (integer))
+            (integer))
+          (switch_case
+            (switch_pattern)
+            (switch_predecessor
+              (identifier)
+              (integer))))))))
+
+================================================================================
+If Term
+================================================================================
+
+main = if (< 1 2) {
+  abc
+} else {
+  def
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_if
+        (num_operator
+          (operator)
+          (integer)
+          (integer))
+        (body
+          (body
+            (identifier)))
+        (else_clause
+          (body
+            (identifier)))))))
+
+================================================================================
+Bend Term
+================================================================================
+
+main = bend x = 0 {
+    when (< x 3):
+      (Tree/Node (fork (+ x 1)) (fork (+ x 1)))
+    else:
+      (Tree/Leaf x)
+  }
+main = bend x = 0, y = 1, z = 2 {
+    when (< x 3):
+      abc
+    else:
+      def
+  }
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_bend
+        (bind
+          (identifier)
+          (integer))
+        (when_clause
+          (num_operator
+            (operator)
+            (identifier)
+            (integer))
+          (body
+            (application
+              (identifier)
+              (application
+                (identifier)
+                (num_operator
+                  (operator)
+                  (identifier)
+                  (integer)))
+              (application
+                (identifier)
+                (num_operator
+                  (operator)
+                  (identifier)
+                  (integer))))))
+        (else_clause
+          (body
+            (application
+              (identifier)
+              (identifier)))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_bend
+        (bind
+          (identifier)
+          (integer))
+        (bind
+          (identifier)
+          (integer))
+        (bind
+          (identifier)
+          (integer))
+        (when_clause
+          (num_operator
+            (operator)
+            (identifier)
+            (integer))
+          (body
+            (identifier)))
+        (else_clause
+          (body
+            (identifier)))))))
+
+================================================================================
+Open Term
+================================================================================
+
+main = open Pair x;
+(+ x.fst x.snd)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    name: (identifier)
+    (body
+      (fun_open
+        type: (identifier)
+        variable: (identifier)
+        (body
+          (num_operator
+            (operator)
+            (identifier)
+            (identifier)))))))
+
+================================================================================
+Open Term
+================================================================================
+
+Main = with Result {
+  ask y = (div 3 2);
+  ask x = (rem y 0);
+  x
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_with
+        (identifier)
+        (body
+          (fun_ask
+            (pattern
+              (identifier))
+            (body
+              (application
+                (identifier)
+                (integer)
+                (integer)))
+            (ask_next
+              (fun_ask
+                (pattern
+                  (identifier))
+                (body
+                  (application
+                    (identifier)
+                    (identifier)
+                    (integer)))
+                (ask_next
+                  (identifier))))))))))
+
+================================================================================
+Nat Term
+================================================================================
+
+Main = #3
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (nat
+        (integer)))))

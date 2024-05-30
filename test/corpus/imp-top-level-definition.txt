@@ -9,7 +9,7 @@ def func():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body

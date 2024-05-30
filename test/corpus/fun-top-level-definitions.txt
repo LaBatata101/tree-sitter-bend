@@ -1,0 +1,111 @@
+================================================================================
+Fun Type Definition
+================================================================================
+
+type Name
+      = (Ctr1 arg1 arg2)
+      | Ctr2
+      | (abcd)
+
+type Name2 = (Ctr1 arg1 arg2) | Ctr2 | Ctr3
+
+type Tree
+  = (Leaf value)
+  | (Node ~left ~right)
+  | Nil
+
+--------------------------------------------------------------------------------
+(source_file
+  (fun_type_definition
+    (identifier)
+    (fun_type_constructor_with_fields
+      (identifier)
+      (identifier)
+      (identifier))
+    (fun_type_constructor
+      (identifier))
+    (fun_type_constructor_with_fields
+      (identifier)))
+  (fun_type_definition
+    (identifier)
+    (fun_type_constructor_with_fields
+      (identifier)
+      (identifier)
+      (identifier))
+    (fun_type_constructor
+      (identifier))
+    (fun_type_constructor
+      (identifier)))
+  (fun_type_definition
+    (identifier)
+    (fun_type_constructor_with_fields
+      (identifier)
+      (identifier))
+    (fun_type_constructor_with_fields
+      (identifier)
+      (identifier)
+      (identifier))
+    (fun_type_constructor
+      (identifier))))
+
+================================================================================
+Fun Function Definition
+================================================================================
+
+main = F
+identity x = x
+(Bool.neg True)  = False
+MapMaybe None f = None
+Pair.get (fst, snd) f = (f fst snd)
+MapMaybe (Some val) f = True
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    name: (identifier)
+    (body
+      (identifier)))
+  (fun_function_definition
+    name: (identifier)
+    (pattern
+      (identifier))
+    (body
+      (identifier)))
+  (fun_function_definition
+    name: (identifier)
+    (pattern
+      (identifier))
+    (body
+      (identifier)))
+  (fun_function_definition
+    name: (identifier)
+    (pattern
+      (identifier))
+    (pattern
+      (identifier))
+    (body
+      (identifier)))
+  (fun_function_definition
+    name: (identifier)
+    (pattern
+      (tuple
+        (identifier)
+        (identifier)))
+    (pattern
+      (identifier))
+    (body
+      (application
+        (identifier)
+        (identifier)
+        (identifier))))
+  (fun_function_definition
+    name: (identifier)
+    (pattern
+      (pattern_constructor
+        (identifier)
+        (identifier)))
+    (pattern
+      (identifier))
+    (body
+      (identifier))))

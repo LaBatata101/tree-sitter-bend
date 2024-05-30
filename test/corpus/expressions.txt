@@ -9,7 +9,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     name: (identifier)
     parameters: (parameters)
     (body
@@ -41,7 +41,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -69,7 +69,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -116,7 +116,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -182,7 +182,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -210,23 +210,23 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
       (return_statement
-        (lambda_expression
+        (imp_lambda
           (parameters
             (identifier))
           (identifier)))
       (return_statement
-        (lambda_expression
+        (imp_lambda
           (parameters
             (identifier)
             (identifier))
           (identifier)))
       (return_statement
-        (lambda_expression
+        (imp_lambda
           (parameters
             (identifier)
             (identifier)
@@ -235,7 +235,7 @@ def main():
             (identifier)
             (identifier))))
       (return_statement
-        (lambda_expression
+        (imp_lambda
           (parameters
             (identifier)
             (identifier))
@@ -254,17 +254,17 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
       (return_statement
-        (lambda_expression
+        (imp_lambda
           (parameters
             (unscoped_var))
           (unscoped_var)))
       (return_statement
-        (lambda_expression
+        (imp_lambda
           (parameters
             (unscoped_var)
             (unscoped_var))
@@ -284,7 +284,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -342,7 +342,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body

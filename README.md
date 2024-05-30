@@ -1,2 +1,3 @@
 # tree-sitter-bend
-Bend grammar for tree-sitter
+
+Bend grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter)

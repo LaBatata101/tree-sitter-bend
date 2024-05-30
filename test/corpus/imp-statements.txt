@@ -12,7 +12,7 @@ def main():
 
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -50,7 +50,7 @@ def main():
 
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -76,7 +76,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -112,7 +112,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -158,7 +158,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -217,7 +217,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -257,7 +257,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -297,7 +297,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
@@ -337,7 +337,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     name: (identifier)
     parameters: (parameters)
     (body
@@ -360,7 +360,7 @@ def main():
 --------------------------------------------------------------------------------
 
 (source_file
-  (function_definition
+  (imp_function_definition
     (identifier)
     (parameters)
     (body
