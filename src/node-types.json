@@ -1830,9 +1830,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "fun_type_constructor_fields",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
@@ -1841,12 +1845,12 @@
     }
   },
   {
-    "type": "fun_type_constructor_with_fields",
+    "type": "fun_type_constructor_fields",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "identifier",
@@ -1858,21 +1862,24 @@
   {
     "type": "fun_type_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
           "type": "fun_type_constructor",
-          "named": true
-        },
-        {
-          "type": "fun_type_constructor_with_fields",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         }
       ]
@@ -2278,15 +2285,22 @@
   {
     "type": "imp_type_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
         {
           "type": "imp_type_constructor",
           "named": true
@@ -3354,16 +3368,27 @@
         "required": false,
         "types": [
           {
-            "type": ",",
-            "named": false
-          },
+            "type": "object_field",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
           {
             "type": "identifier",
             "named": true
           }
         ]
       }
-    },
+    }
+  },
+  {
+    "type": "object_field",
+    "named": true,
+    "fields": {},
     "children": {
       "multiple": false,
       "required": true,

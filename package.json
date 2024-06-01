@@ -1,55 +1,57 @@
 {
-    "name": "tree-sitter-bend",
-    "version": "1.0.0",
-    "main": "bindings/node",
-    "types": "bindings/node",
-    "author": "LaBatata101",
-    "license": "MIT",
-    "description": "Bend grammar for tree-sitter",
-    "keywords": [
-      "parser",
-      "bend",
-      "incremental",
-      "tree-sitter"
-    ],
-    "dependencies": {
-        "node-addon-api": "^7.1.0",
-        "node-gyp-build": "^4.8.0"
-    },
-    "peerDependencies": {
-        "tree-sitter": "^0.21.0"
-    },
-    "peerDependenciesMeta": {
-        "tree_sitter": {
-            "optional": true
-        }
-    },
-    "devDependencies": {
-        "prebuildify": "^6.0.0"
-    },
-    "files": [
-        "grammar.js",
-        "binding.gyp",
-        "prebuilds/**",
-        "bindings/node/*",
-        "queries/*",
-        "src/**"
-    ],
-    "scripts": {
-      "build": "tree-sitter generate && node-gyp build",
-      "test": "tree-sitter test",
-      "parse": "tree-sitter parse",
-      "test-windows": "tree-sitter test"
-    },
-    "repository": "https://github.com/LaBatata101/tree-sitter-bend",
-    "tree-sitter": [
-        {
-            "scope": "source.bend",
-            "file-types": [
-              "bend"
-            ],
-            "injection-regex": "^bend$",
-            "highlights": "queries/highlights.scm"
-        }
-    ]
+  "name": "tree-sitter-bend",
+  "version": "1.0.0",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "author": "LaBatata101",
+  "license": "MIT",
+  "description": "Bend grammar for tree-sitter",
+  "keywords": [
+    "parser",
+    "bend",
+    "incremental",
+    "tree-sitter"
+  ],
+  "dependencies": {
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "prebuildify": "^6.0.0"
+  },
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "scripts": {
+    "build": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "parse": "tree-sitter parse",
+    "test-windows": "tree-sitter test",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "repository": "https://github.com/LaBatata101/tree-sitter-bend",
+  "tree-sitter": [
+    {
+      "scope": "source.bend",
+      "file-types": [
+        "bend"
+      ],
+      "injection-regex": "^bend$",
+      "highlights": "queries/highlights.scm"
+    }
+  ]
 }

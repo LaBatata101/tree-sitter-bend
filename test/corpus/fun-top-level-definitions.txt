@@ -15,36 +15,41 @@ type Tree
   | Nil
 
 --------------------------------------------------------------------------------
+
 (source_file
   (fun_type_definition
     (identifier)
-    (fun_type_constructor_with_fields
-      (identifier)
-      (identifier)
-      (identifier))
     (fun_type_constructor
-      (identifier))
-    (fun_type_constructor_with_fields
-      (identifier)))
-  (fun_type_definition
-    (identifier)
-    (fun_type_constructor_with_fields
       (identifier)
-      (identifier)
-      (identifier))
+      (fun_type_constructor_fields
+        (identifier)
+        (identifier)))
     (fun_type_constructor
       (identifier))
     (fun_type_constructor
       (identifier)))
   (fun_type_definition
     (identifier)
-    (fun_type_constructor_with_fields
+    (fun_type_constructor
       (identifier)
+      (fun_type_constructor_fields
+        (identifier)
+        (identifier)))
+    (fun_type_constructor
       (identifier))
-    (fun_type_constructor_with_fields
+    (fun_type_constructor
+      (identifier)))
+  (fun_type_definition
+    (identifier)
+    (fun_type_constructor
       (identifier)
+      (fun_type_constructor_fields
+        (identifier)))
+    (fun_type_constructor
       (identifier)
-      (identifier))
+      (fun_type_constructor_fields
+        (identifier)
+        (identifier)))
     (fun_type_constructor
       (identifier))))
 

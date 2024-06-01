@@ -29,9 +29,11 @@ object Vec { len, data }
 
 (source_file
   (object_definition
-    (identifier)
-    field: (identifier)
-    field: (identifier)))
+    name: (identifier)
+    field: (object_field
+      (identifier))
+    field: (object_field
+      (identifier))))
 
 ================================================================================
 Imp Type Definition

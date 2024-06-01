@@ -46,6 +46,8 @@ module.exports = grammar({
   conflicts: $ => [
     [$.for_clause],
     [$.eraser],
+    [$.fun_type_constructor],
+    [$.fun_type_constructor_fields],
     [$.constructor, $.superposition],
     [$.imp_lambda, $.constructor],
     [$._fun_eraser, $.operator],
@@ -130,12 +132,18 @@ module.exports = grammar({
 
     object_definition: $ => seq(
       'object',
-      $.identifier,
+      field('name', $.identifier),
+      $._object_def_body,
+    ),
+
+    _object_def_body: $ => seq(
       '{',
-      // TODO: allow trailing comma
-      field('field', optional(commaSep1($.identifier))),
+      optional(commaSep1(field('field', $.object_field))),
+      optional(','),
       '}',
     ),
+
+    object_field: $ => $.identifier,
 
     _type_definition: $ => choice(
       $.imp_type_definition,
@@ -144,7 +152,7 @@ module.exports = grammar({
 
     fun_type_definition: $ => seq(
       'type',
-      $.identifier,
+      field('name', $.identifier),
       optional($._indent),
       '=',
       $._fun_type_body,
@@ -152,21 +160,20 @@ module.exports = grammar({
     ),
 
     _fun_type_body: $ => sep1(choice(
+      seq('(', $.fun_type_constructor, ')'),
       $.fun_type_constructor,
-      $.fun_type_constructor_with_fields,
     ), '|'),
 
-    fun_type_constructor: $ => $.identifier,
-
-    fun_type_constructor_with_fields: $ => seq(
-      '(',
-      repeat($._type_constructor_field),
-      ')'
+    fun_type_constructor: $ => seq(
+      $.identifier,
+      optional($.fun_type_constructor_fields)
     ),
+
+    fun_type_constructor_fields: $ => repeat1($._type_constructor_field),
 
     imp_type_definition: $ => seq(
       'type',
-      $.identifier,
+      field('name', $.identifier),
       ':',
       $._imp_type_def_body,
     ),
